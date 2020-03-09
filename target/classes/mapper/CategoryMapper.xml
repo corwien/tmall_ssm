@@ -5,7 +5,18 @@
         
 <mapper namespace="com.how2java.tmall.mapper.CategoryMapper">
     <select id="list" resultType="Category">
-        SELECT * FROM catetory ORDER BY id DESC
+        SELECT * FROM category ORDER BY id DESC
+        <if test="start!=null and count!=null">
+           limit #{start},#{count}
+        </if>
     </select>
+
+    <select id="total" resultType="int">
+        select count(*) from category
+    </select>
+
+    <insert id="add" keyProperty="id"  useGeneratedKeys="true" parameterType="Category">
+        insert into category (name) values (#{name})
+    </insert>
 
 </mapper>       

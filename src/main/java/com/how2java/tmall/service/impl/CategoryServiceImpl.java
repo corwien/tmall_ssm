@@ -1,5 +1,6 @@
 package com.how2java.tmall.service.impl;
 
+import com.how2java.tmall.util.Page;
 import com.how2java.tmall.mapper.CategoryMapper;
 import com.how2java.tmall.pojo.Category;
 import com.how2java.tmall.service.CategoryService;
@@ -15,9 +16,24 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     CategoryMapper categoryMapper;
 
-    public List<Category> list(){
-        return categoryMapper.list();
+    @Override
+    public List<Category> list(Page page){
+        return categoryMapper.list(page);
     }
+
+
+    @Override
+    public int total(){
+        return categoryMapper.total();
+
+    }
+
+    @Override
+    public void add(Category category){
+        categoryMapper.add(category);
+    }
+
+
 
 
 
